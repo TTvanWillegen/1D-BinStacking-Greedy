@@ -15,6 +15,7 @@ function calc(requirements, pipeLength, cutWidth){
             if ((req + cutWidth) <= remaining){
                 isCut = true;
                 pipe.addCut(req)
+				break;
             }
         }
         if(!isCut){
