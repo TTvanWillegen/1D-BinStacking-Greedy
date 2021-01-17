@@ -1,0 +1,16 @@
+
+
+@media print
+{
+    #input {
+        display: none;
+    }
+
+    .progress-bar {
+        border-right: 1px solid black;
+    }
+
+    .progress {
+        border: 1px solid black;
+    }
+}

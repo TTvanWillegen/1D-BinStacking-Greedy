@@ -10,8 +10,6 @@ function calc(requirements, pipeLength, cutWidth){
 
         for (let pipe of cutPipes) {
             let remaining = pipe.remainingLength(cutWidth);
-            console.log(remaining, req, cutWidth)
-            console.log(req + cutWidth, remaining)
             if ((req + cutWidth) <= remaining){
                 isCut = true;
                 pipe.addCut(req)
@@ -50,6 +48,7 @@ class Pipe {
         return this.length - total;
     }
 }
+
 function updateMaxCutLength() {
     let pipeLength = document.getElementById("pipeLength").value
     let cutInputs = document.getElementsByClassName("cutLength")
@@ -59,14 +58,14 @@ function updateMaxCutLength() {
 }
 
 function runCalculation() {
-    let pipeLength = document.getElementById("pipeLength").value
-    let cutWidth = document.getElementById("cutWidth").value
+    let pipeLength = parseFloat(document.getElementById("pipeLength").value)
+    let cutWidth = parseFloat(document.getElementById("cutWidth").value)
 
     let toCut = [];
     let cuts = document.querySelectorAll("#cutsContainer .row")
     for (let i = 0; i < cuts.length; i++) {
         let cut = cuts[i]
-        let amount = cut.getElementsByClassName("cutAmount")[0].value
+        let amount = parseInt(cut.getElementsByClassName("cutAmount")[0].value)
         let length = parseFloat(cut.getElementsByClassName("cutLength")[0].value)
 
         for (let j = 0; j < amount; j++) {
@@ -74,7 +73,6 @@ function runCalculation() {
         }
     }
 
-    console.log(toCut, pipeLength, cutWidth)
     try {
         doneCuts = calc(toCut, pipeLength, cutWidth)
         output(doneCuts, cutWidth)
@@ -85,8 +83,6 @@ function runCalculation() {
 }
 
 function output(pipes, cutWidth) {
-    console.log(pipes)
-
     let pc = document.getElementById("pipeContainer")
     while (pc.firstChild) {
         pc.removeChild(pc.lastChild)
