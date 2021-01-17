@@ -60,7 +60,7 @@ function updateMaxCutLength() {
 
 function runCalculation() {
     let pipeLength = document.getElementById("pipeLength").value
-    let cutWidth = document.getElementById("cutWidth").value / 1000
+    let cutWidth = document.getElementById("cutWidth").value
 
     let toCut = [];
     let cuts = document.querySelectorAll("#cutsContainer .row")
@@ -168,13 +168,13 @@ function addExtra() {
     lengthInput.type = "number";
     lengthInput.id = "cutLength-" + cuts.length;
     lengthInput.className = "form-control cutLength"
-    lengthInput.placeholder = "Cut Length (m)"
-    lengthInput.setAttribute("step", "0.001")
+    lengthInput.placeholder = "Cut Length (mm)"
+    lengthInput.setAttribute("step", "0.1")
     lengthInput.setAttribute("min", "0")
 
     let lengthLabel = document.createElement("label")
     lengthLabel.htmlFor = "cutLength-" + cuts.length
-    lengthLabel.textContent = "Cut lengths (m)"
+    lengthLabel.textContent = "Cut lengths (mm)"
 
     let col9 = document.createElement("div")
     col9.className = "col-9 form-floating"
