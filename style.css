@@ -1,4 +1,6 @@
-
+.form-floating > label {
+    margin-left: 1em;
+}
 
 @media print
 {
